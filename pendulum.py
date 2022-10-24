@@ -33,13 +33,17 @@ class Bob:
     """
 
     def __init__(
-        self, length: Union[int, float], mass: Union[int, float], initial_angle: Union[int, float]
+        self,
+        length: Union[int, float],
+        mass: Union[int, float],
+        initial_angle: Union[int, float],
+        damping: Union[int, float] = 1,
     ) -> None:
         self.length: Union[int, float] = length
         self.mass: Union[int, float] = mass
         self.theta: Union[int, float] = initial_angle
         # If it's 1 then there is no damping. If it's 9.99 then 1% is the damping.
-        self.damping: Union[int, float] = 1
+        self.damping: Union[int, float] = damping
         self.velocity: Union[int, float] = 0
         self.x_position: Union[int, float] = 0
         self.y_position: Union[int, float] = 0
@@ -55,7 +59,7 @@ class Pendulum:
     """
 
     def __init__(
-        self, bob: Bob, len_of_simulation: Union[int, float] = 30, dt: Union[int, float] = 0.1
+        self, bob: Bob, len_of_simulation: Union[int, float] = 30, dt: Union[int, float] = 0.1,
     ) -> None:
         """
         Init method of Pendulum class. It initialises the instance variables.
