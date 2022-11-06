@@ -145,7 +145,7 @@ class Pendulum:
         if current_time > axes[1, 1].get_xlim()[1]:
             axes[1, 1].set_xlim(0, 2 * current_time)
 
-        plt.pause(1e-5)
+        plt.pause(1e-2)
 
     def acceleration_wrapper(self, data_array, _) -> np.array:
         """
@@ -209,7 +209,7 @@ class Pendulum:
 
         axes[0, 0].plot([-0.5, 0.5], [0, 0], "-k", linewidth=5)
 
-        (line,) = axes[0, 0].plot(xlist, ylist, "-bo", markersize=10, linewidth=3)
+        (line,) = axes[0, 0].plot(xlist, ylist, "-bo", markersize=10, linewidth=3, color="green")
 
         (line1,) = axes[0, 0].plot(self.bob.x_position, self.bob.y_position, "-b", linewidth=2)
 
@@ -221,7 +221,7 @@ class Pendulum:
         axes[0, 0].set_ylabel("y_position", fontsize=20)
         data.append([line, line1])
 
-        (line2,) = axes[1, 0].plot(0, self.bob.theta, "-b")
+        (line2,) = axes[1, 0].plot(0, self.bob.theta, "-b", color="green")
         axes[1, 0].set_ylim(-np.pi - 0.5, np.pi + 0.5)
 
         unit: float = 0.25
@@ -235,7 +235,7 @@ class Pendulum:
         axes[1, 0].set_ylabel("$\\theta$", fontsize=20)
         data.append([line2])
 
-        (line1,) = axes[0, 1].plot(self.bob.theta, self.bob.velocity, "b.")
+        (line1,) = axes[0, 1].plot(self.bob.theta, self.bob.velocity, "b.", color="green")
 
         axes[0, 1].set_xlabel("$\\theta$", fontsize=20)
         axes[0, 1].set_ylabel("$\\dot{\\theta}$", fontsize=20)
@@ -247,7 +247,7 @@ class Pendulum:
 
         data.append([line1, line2])
 
-        (line1,) = axes[1, 1].plot(0, self.bob.energy, "-b")
+        (line1,) = axes[1, 1].plot(0, self.bob.energy, "-b", color="green")
 
         data.append([line1])
         axes[0, 0].plot(xlist, ylist, "-o", color="grey", linewidth=3, markersize=10)
