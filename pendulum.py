@@ -98,8 +98,6 @@ class Pendulum:
         """
         Update all of the plots.
 
-        # TODO: Visualize the Ke and Pe Energies.
-
         Args:
             current_time: The current time (time+dt).
             axes: List of axes.
