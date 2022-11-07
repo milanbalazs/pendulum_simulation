@@ -77,7 +77,7 @@ class Gui(Tk):
         bob_damping_entry = Entry(self, textvariable=self.bob_damping)
         bob_damping_entry.grid(row=3, column=1)
 
-        pendulum_simulation_entry = Entry(self, textvariable=self.bob_initial_angle)
+        pendulum_simulation_entry = Entry(self, textvariable=self.pendulum_simulation)
         pendulum_simulation_entry.grid(row=4, column=1)
 
         pendulum_dt_entry = Entry(self, textvariable=self.pendulum_dt)
