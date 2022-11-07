@@ -134,12 +134,20 @@ class Pendulum:
 
         line1 = data[3][0]
 
-        axes[1, 1].set_title("Total energy: {:.2f}".format(self.bob.energy))
+        axes[1, 1].set_title("Energies: {:.2f}".format(self.bob.energy))
         line1.set_xdata(np.append(line1.get_xdata(), current_time))
         line1.set_ydata(np.append(line1.get_ydata(), self.bob.energy))
 
-        y_axe_max_1_1 = np.amax(line1.get_ydata()) + 0.1
-        y_axe_min_1_1 = np.amin(line1.get_ydata()) - 0.1
+        line2 = data[3][1]
+        line2.set_xdata(np.append(line2.get_xdata(), current_time))
+        line2.set_ydata(np.append(line2.get_ydata(), self.bob.ke))
+
+        line3 = data[3][2]
+        line3.set_xdata(np.append(line3.get_xdata(), current_time))
+        line3.set_ydata(np.append(line3.get_ydata(), self.bob.pe))
+
+        y_axe_max_1_1 = max([np.amax(line1.get_ydata()), np.amax(line2.get_ydata()), np.amax(line3.get_ydata())]) + 0.1
+        y_axe_min_1_1 = min([np.amin(line1.get_ydata()), np.amin(line2.get_ydata()), np.amin(line3.get_ydata())]) - 0.1
         axes[1, 1].set_ylim(y_axe_min_1_1, y_axe_max_1_1)
 
         if current_time > axes[1, 1].get_xlim()[1]:
@@ -248,8 +256,10 @@ class Pendulum:
         data.append([line1, line2])
 
         (line1,) = axes[1, 1].plot(0, self.bob.energy, "-b", color="green")
+        (line2,) = axes[1, 1].plot(0, self.bob.ke, "-b", color="blue")
+        (line3,) = axes[1, 1].plot(0, self.bob.pe, "-b", color="red")
 
-        data.append([line1])
+        data.append([line1, line2, line3])
         axes[0, 0].plot(xlist, ylist, "-o", color="grey", linewidth=3, markersize=10)
 
         # plt.show()
